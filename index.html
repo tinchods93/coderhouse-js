@@ -17,9 +17,26 @@
   <body>
     <main id="tablero">
       <h1>Ta-Te-Ti</h1>
+      <div>
+        <p>
+          <strong>Juega:</strong>
+          <span id="jugador-actual"></span>
+        </p>
+      </div>
       <div id="tablero-juego"></div>
-      <div id="mensaje"></div>
-      <button id="boton_reiniciar">Reiniciar</button>
+      <div>
+        <p id="mensaje"></p>
+      </div>
+      <div id="puntuacion">
+        <p>
+          <strong>Puntuación:</strong>
+          <span id="puntos-jugador-1">0</span>
+          <span> - </span>
+          <span id="puntos-jugador-2">0</span>
+        </p>
+      </div>
+      <button class="boton" id="reiniciar-tablero">Reiniciar Tablero</button>
+      <button class="boton" id="reiniciar-juego">Reiniciar Juego</button>
     </main>
     <script src="./scripts/index.js" />
   </body>
