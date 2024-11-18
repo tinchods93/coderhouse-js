@@ -73,6 +73,10 @@ table {
   height: 100px;
 }
 
+.celda:hover {
+  background-color: rgb(249, 255, 168);
+}
+
 .jugador-1 {
   color: rgb(255, 0, 0);
 }
@@ -81,23 +85,38 @@ table {
   color: rgb(0, 0, 255);
 }
 
-#boton_reiniciar {
+.boton {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgb(103, 246, 103);
   text-transform: uppercase;
-  border: 2px solid black;
   cursor: pointer;
   border-radius: 0.5rem;
   width: 100%;
   font-size: 1.2rem;
 }
 
-#boton_reiniciar:hover {
+#reiniciar-tablero {
+  background-color: rgb(103, 246, 103);
+  border: 2px solid black;
+}
+#reiniciar-tablero:hover {
   color: white;
   font-weight: 700;
   background-color: rgb(96, 228, 96);
   border: 2px solid rgb(74, 178, 74);
   box-shadow: 0 0 10px rgb(103, 246, 103);
+}
+
+#reiniciar-juego {
+  background-color: rgb(255, 154, 60);
+  border: 2px solid black;
+}
+
+#reiniciar-juego:hover {
+  color: white;
+  font-weight: 700;
+  background-color: rgb(255, 216, 60);
+  border: 2px solid rgb(200, 121, 48);
+  box-shadow: 0 0 10px rgb(255, 212, 82);
 }
