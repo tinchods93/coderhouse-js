@@ -20,7 +20,9 @@ Para esta entrega opte por un simulador de homebanking con algunas funciones bas
 
 - Usamos Localstorage como base de datos local.
 - HTML y CSS para renderizar la UI.
-- Sistema de Autenticación y manejo de Sesión de usuario.
-- Transferencias de saldo a otro usuario mediante su "username" o "nombre de usuario".
-- Agregar o retirar dinero de la propia cuenta.
-- Historial de movimientos
+- Javascript como lenguaje de programación.
+- Funciones simuladas.
+  - Sistema de Autenticación y manejo de Sesión de usuario.
+  - Transferencias de saldo a otro usuario mediante su "username" o "nombre de usuario".
+  - Agregar o retirar dinero de la propia cuenta.
+  - Historial de movimientos
