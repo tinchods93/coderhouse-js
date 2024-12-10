@@ -95,7 +95,7 @@ const validateSession = () => {
     pathName !== '/auth/login.html' &&
     pathName !== '/auth/register.html'
   ) {
-    window.location.href = '../auth/login.html';
+    window.location.href = 'pages/auth/login.html';
     return null;
   }
   return session;
