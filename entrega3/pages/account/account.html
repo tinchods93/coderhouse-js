@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../../styles/reset.css" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/b9fbd9565a.js"
+      crossorigin="anonymous"></script>
+    <title>Bank Simulator - Home</title>
+  </head>
+  <body>
+    <main>
+      <div class="main-container">
+        <div class="container">
+          <h1>Cuenta</h1>
+          <div class="operation-total-balance">
+            <p>
+              Saldo actual:
+              <span id="account-balance"></span>
+            </p>
+          </div>
+
+          <div class="card">
+            <a href="./deposit.html">Agregar Saldo</a>
+            <a href="./withdraw.html">Extraer Saldo</a>
+            <a href="./transfer.html">Transfer</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li>
+          <a href="./movement-history.html">Movimientos</a>
+        </li>
+        <li>
+          <button id="logout-btn">Salir</button>
+        </li>
+      </ul>
+    </footer>
+    <script src="../../scripts/bankSimulator.js"></script>
+  </body>
+</html>
