@@ -1,3 +1,10 @@
+/**
+
+  - Usar fetch para algo, podemos usar una api real o usar rutas relativas y simular una
+  - Usar alguna libreria externa. Por ejemplo, Sweet Alert o Toastify.
+  -
+ */
+
 // Funciones de base de datos
 let database;
 const dbName = `bankSimulatorDb`;
@@ -12,7 +19,6 @@ const getDb = () => {
   } else {
     database = JSON.parse(dbStringFormat);
   }
-  console.log('DB_LOADED', database);
 };
 
 // Guarda la base de datos en el localStorage
@@ -23,7 +29,6 @@ const saveDb = () => {
 // Obtiene un ítem por su ID de una tabla específica
 const getItemById = (id, table) => {
   const item = database?.[table]?.[id];
-  console.log('getItemById', { item, table, id, database });
   return item;
 };
 
@@ -89,13 +94,14 @@ const getSession = () => {
 // Valida la sesión de usuario y redirige si no es válida
 const validateSession = () => {
   const session = getSession();
-  const pathName = window.location.pathname.replace('/entrega2/pages', '');
+  const pathName = window.location.pathname.replace('/entrega3/pages', '');
   if (
     !session &&
     pathName !== '/auth/login.html' &&
-    pathName !== '/auth/register.html'
+    pathName !== '/auth/register.html' &&
+    pathName !== '/home/index.html'
   ) {
-    window.location.href = 'pages/auth/login.html';
+    pathResolver('auth/login.html');
     return null;
   }
   return session;
@@ -153,7 +159,7 @@ const registerUser = (event) => {
   }
   addItem(newUser, 'users');
   alert('Usuario registrado correctamente');
-  window.location.href = 'login.html';
+  pathResolver('auth/login.html');
 };
 
 // Inicia sesión de usuario
@@ -180,14 +186,14 @@ const loginUser = (event) => {
   }
   addSession(user);
   alert('Usuario logueado correctamente');
-  window.location.href = '../account/account.html';
+  pathResolver('account/account.html');
 };
 
 // Cierra sesión de usuario
 const logoutUser = () => {
   validateSession();
   deleteSession();
-  window.location.href = '../../index.html';
+  pathResolver('home/index.html');
 };
 
 // Funciones de movimientos
@@ -313,7 +319,7 @@ const makeWithdraw = (event) => {
   const user = getSession()?.session_data.user;
   const withdrawAmount = withdrawInput.value;
   if (withdrawAmount <= 0) {
-    withdrawErrorMessage.innerText = 'El monto a withdrawar debe ser mayor a 0';
+    withdrawErrorMessage.innerText = 'El monto debe ser mayor a 0';
     return;
   }
   user.balance -= Number(withdrawAmount);
@@ -325,7 +331,8 @@ const makeWithdraw = (event) => {
     amount: withdrawAmount,
   });
   alert(`Se ha retirado $${withdrawAmount} de su cuenta`);
-  window.location.href = 'account.html';
+
+  pathResolver('account/account.html');
 };
 
 // Funciones de transferencia
@@ -363,9 +370,9 @@ const makeTransfer = (event) => {
       'No puedes transferirte a ti mismo';
     return;
   }
-  if (transferAmount <= 10) {
+  if (transferAmount < 10 || isNaN(transferAmount)) {
     transferAmountErrorMessage.innerText =
-      'El monto a transferir debe ser mayor a $10.00';
+      'El monto mínimo a transferir es de $10.00';
     return;
   }
   if (user.balance < transferAmount) {
@@ -410,7 +417,7 @@ const makeTransfer = (event) => {
     amount: transferAmount,
   });
   alert(`Se ha retirado $${transferAmount} de su cuenta`);
-  window.location.href = 'account.html';
+  pathResolver('account/account.html');
 };
 
 // Actualiza la pantalla con los datos del usuario
@@ -456,7 +463,7 @@ const makeDeposit = (event) => {
     amount: depositAmount,
   });
   alert(`Se ha depositado $${depositAmount} a su cuenta`);
-  window.location.href = 'account.html';
+  pathResolver('account/account.html');
 };
 
 // Funciones del pie de página
@@ -485,6 +492,24 @@ const initiateDocument = () => {
   return session;
 };
 
+// resuelve la ruta relativa dentro de "pages"
+const pathResolver = (path) => {
+  console.log('MARTIN_LOG=> window', window.location);
+  console.log(
+    'MARTIN_LOG=> window.location.pathname',
+    window.location.pathname
+  );
+  console.log('MARTIN_LOG=> pathResolver -> path', path);
+
+  const pathList = window.location.pathname.split('/');
+  const pagesIndex = pathList.indexOf('pages');
+  path.split('/').forEach((pathPart, index) => {
+    pathList[pagesIndex + index + 1] = pathPart;
+  });
+  console.log('MARTIN_LOG=> pathResolver -> pathList', pathList.join('/'));
+  window.location.pathname = pathList.join('/');
+};
+
 // Listeners para el evento DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   const session = initiateDocument();
@@ -499,6 +524,5 @@ document.addEventListener('DOMContentLoaded', () => {
   getMovementReferences();
   renderMovements(session?.session_data?.user);
   initiateFooter();
-  console.log('MARTIN_LOG=> session', session);
   updateScreen(session?.session_data?.user);
 });
