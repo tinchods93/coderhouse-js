@@ -2,7 +2,6 @@
 
   - Usar fetch para algo, podemos usar una api real o usar rutas relativas y simular una
   - Usar alguna libreria externa. Por ejemplo, Sweet Alert o Toastify.
-  -
  */
 
 // Funciones de base de datos
@@ -129,7 +128,7 @@ let nameErrorMessage,
 // Obtiene referencias a los elementos del DOM relacionados con la autenticación
 const getAuthElementReferences = () => {
   nameErrorMessage = document.getElementById('name-error');
-  passwordErrorMessage = document.getElementById('name-error');
+  passwordErrorMessage = document.getElementById('password-error');
   usernameInput = document.getElementById('username');
   passwordInput = document.getElementById('password');
   passwordConfirmInput = document.getElementById('password-confirm');
@@ -157,10 +156,18 @@ const registerUser = async (event) => {
     passwordErrorMessage.innerText = 'La contraseña es requerida';
     return;
   }
+
+  if (passwordValue.length < 6) {
+    passwordErrorMessage.innerText =
+      'La contraseña debe tener al menos 6 caracteres';
+    return;
+  }
+
   if (passwordValue !== passwordConfirmValue) {
     passwordErrorMessage.innerText = 'Las contraseñas no coinciden';
     return;
   }
+
   const newUser = {
     id: usernameValue,
     password: passwordValue,
