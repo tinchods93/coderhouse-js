@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../../styles/reset.css" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/b9fbd9565a.js"
+      crossorigin="anonymous"></script>
+    <title>Bank Simulator - Home</title>
+  </head>
+  <body>
+    <div class="phone">
+      <main class="main-container">
+        <div class="container user-info card">
+          <h2 class="username">USERNAME</h2>
+          <h1><ul id="account-balance"></ul></h1>
+        </div>
+        <div class="container">
+          <div class="card">
+            <a href="./deposit.html">
+              <i class="fa-solid fa-plus"></i>Agregar Saldo - AR$</a
+            >
+            <a href="./withdraw.html"
+              ><i class="fa-solid fa-minus"></i>Extraer Saldo - AR$</a
+            >
+            <a href="./transfer.html"
+              ><i class="fa-solid fa-arrow-right-arrow-left"></i>Transfer -
+              AR$/U$D</a
+            >
+            <a href="./buyUsd.html"
+              ><i class="fa-solid fa-money-bill-transfer"></i>Comprar Dólares</a
+            >
+          </div>
+        </div>
+      </main>
+      <footer>
+        <nav>
+          <ul>
+            <li>
+              <a href="#" class="page-selected"
+                ><i class="fa-solid fa-house"></i>Inicio</a
+              >
+            </li>
+            <li>
+              <a href="./movement-history.html"
+                ><i class="fa-solid fa-list"></i>Movimientos</a
+              >
+            </li>
+            <li>
+              <button id="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>Salir
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+    <script src="../../scripts/bankSimulator.js"></script>
+  </body>
+</html>

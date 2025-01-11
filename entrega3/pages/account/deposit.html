@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../../styles/reset.css" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/b9fbd9565a.js"
+      crossorigin="anonymous"></script>
+    <title>Bank Simulator - Home</title>
+  </head>
+  <body>
+    <div class="phone">
+      <main class="main-container">
+        <div class="container">
+          <h1>Agregar dinero</h1>
+          <p>
+            Saldo actual:
+            <span id="account-balance"></span>
+          </p>
+        </div>
+        <div class="container">
+          <form class="card">
+            <div class="form-group">
+              <input
+                type="number"
+                min="10"
+                id="deposit-amount"
+                name="deposit-amount"
+                placeholder="Ingrese monto" />
+              <span id="deposit-amount-error" class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <button type="submit" id="deposit-btn" class="confirm-action">
+                <i class="fa-solid fa-circle-check"></i>Confirmar
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+      <footer>
+        <nav>
+          <ul>
+            <li>
+              <a class="navbar-button" href="./account.html"
+                ><i class="fa-solid fa-house"></i>Inicio</a
+              >
+            </li>
+            <li>
+              <a class="navbar-button" href="./movement-history.html"
+                ><i class="fa-solid fa-list"></i>Movimientos</a
+              >
+            </li>
+            <li>
+              <button class="navbar-button" id="logout-btn">Salir</button>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../scripts/bankSimulator.js"></script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../../styles/reset.css" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/b9fbd9565a.js"
+      crossorigin="anonymous"></script>
+    <title>Registro de Usuario</title>
+  </head>
+  <body>
+    <div class="phone">
+      <main class="main-container">
+        <div class="container">
+          <h1>Nueva Cuenta</h1>
+        </div>
+        <form class="card">
+          <div class="form-group">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Ingresar Usuario" />
+            <span id="name-error" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Ingresar Contraseña" />
+            <input
+              type="password"
+              id="password-confirm"
+              name="password-confirm"
+              placeholder="Repetir Contraseña" />
+            <span id="password-error" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="dniNumber"
+              name="dniNumber"
+              placeholder="Ingresar Numero de Documento" />
+            <span id="name-error" class="error-message"></span>
+          </div>
+          <button type="submit" id="register-btn">
+            <i class="fa fa-user-plus"></i> Registrarme
+          </button>
+          <a class="custom-button-a" href="./login.html">
+            <i class="fa fa-sign-in-alt"></i> Ya tengo una cuenta
+          </a>
+        </form>
+      </main>
+      <footer>
+        <nav>
+          <ul>
+            <li>
+              <a class="navbar-button" href="../home/index.html"
+                ><i class="fa-solid fa-house"></i>Inicio</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../scripts/bankSimulator.js"></script>
+  </body>
+</html>

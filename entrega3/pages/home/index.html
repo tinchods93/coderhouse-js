@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/reset.css" />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/b9fbd9565a.js"
+      crossorigin="anonymous"></script>
+    <title>Bank Simulator - Home</title>
+  </head>
+  <body>
+    <div class="phone">
+      <main class="main-container">
+        <div class="container">
+          <h1>BANK<span>.</span>SIM</h1>
+          <h2>Simulador de Banco</h2>
+        </div>
+        <div class="container">
+          <div class="card">
+            <button onclick="window.location.href = '../auth/login.html'">
+              <i class="fa-solid fa-user"></i>
+              Acceder
+            </button>
+            <button onclick="window.location.href = '../auth/register.html'">
+              <i class="fa-solid fa-user-plus"></i>
+              Abrir una cuenta
+            </button>
+          </div>
+        </div>
+        <div class="container">
+          <p>Hecho por <strong>Martin E. dos Santos</strong></p>
+          <p>Para <strong>Coderhouse</strong> - Javascript Flex</p>
+        </div>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../scripts/bankSimulator.js"></script>
+  </body>
+</html>
