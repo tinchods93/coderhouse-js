@@ -61,12 +61,25 @@ const deleteItem = (id, table) => {
 
 // resuelve la ruta relativa dentro de "pages"
 const pathResolver = (path) => {
-  const pathList = window.location.pathname.split('/');
-  const pagesIndex = pathList.indexOf('pages');
-  path.split('/').forEach((pathPart, index) => {
-    pathList[pagesIndex + index + 1] = pathPart;
-  });
-  window.location.pathname = pathList.join('/');
+  if (path.startsWith('/')) {
+    window.location.pathname = path;
+  } else {
+    const pathList = window.location.pathname.split('/').filter((part) => part);
+    const pagesIndex = pathList.indexOf('pages');
+    path.split('/').forEach((pathPart, index) => {
+      pathList[pagesIndex + index + 1] = pathPart;
+    });
+    if (!pathList.includes('pages')) pathList.unshift('pages');
+    if (pathList[0] !== 'entrega3') pathList.unshift('entrega3');
+    console.log('MARTIN_LOG=> pathResolver -> pathList', pathList);
+    window.location.pathname = pathList.join('/');
+  }
+};
+
+const getCurrentPath = () => {
+  return window.location.pathname
+    .replace('/entrega3', '')
+    .replace('/pages', '');
 };
 
 // Funciones de sesión
@@ -103,12 +116,13 @@ const getSession = () => {
 // Valida la sesión de usuario y redirige si no es válida
 const validateSession = () => {
   const session = getSession();
-  const pathName = window.location.pathname.replace('/entrega3/pages', '');
+  const pathName = getCurrentPath();
+
   if (
     !session &&
     pathName !== '/auth/login.html' &&
     pathName !== '/auth/register.html' &&
-    pathName !== '/home/index.html'
+    pathName !== '/index.html'
   ) {
     pathResolver('auth/login.html');
     return null;
@@ -237,7 +251,7 @@ const loginUser = async (event) => {
 const logoutUser = () => {
   validateSession();
   deleteSession();
-  pathResolver('home/index.html');
+  pathResolver('/entrega3/index.html');
 };
 
 // Funciones de movimientos
@@ -437,7 +451,6 @@ const currencyConfig = {
 
 // Obtiene referencias a los elementos del DOM relacionados con las transferencias
 const getTransfersListeners = () => {
-  accountBalanceElement = document.getElementById('account-balance');
   transferRecipientInput = document.getElementById('transfer-recipient');
   transferAmountInput = document.getElementById('transfer-amount');
   transferBtn = document.getElementById('transfer-btn');
@@ -555,6 +568,8 @@ const formatMoneyValue = (value) => {
 
 // Actualiza la pantalla con los datos del usuario
 const updateScreen = async (userData) => {
+  console.log('MARTIN_LOG=> updateScreen -> userData', userData);
+  accountBalanceElement = document.getElementById('account-balance');
   if (!userData) return;
   const formattedBalance = `<li>$${formatMoneyValue(
     userData.balance.ars
@@ -731,18 +746,46 @@ const initiateDocument = () => {
 // Listeners para el evento DOMContentLoaded
 document.addEventListener('DOMContentLoaded', async () => {
   const session = initiateDocument();
-  getAuthElementReferences();
-  setAuthListeners();
-  getWithdrawListeners();
-  setWithdrawListeners();
-  getTransfersListeners();
-  setTransfersListeners();
-  getDepositReferences();
-  setDepositListeners();
-  getUsdCheckoutReferences();
-  setUsdCheckoutListeners();
-  getMovementReferences();
-  renderMovements(session?.session_data?.user);
+  const currentPath = getCurrentPath();
+  if (
+    currentPath === '/auth/login.html' ||
+    currentPath === '/auth/register.html'
+  ) {
+    getAuthElementReferences();
+    setAuthListeners();
+  }
+
+  if (currentPath === '/account/withdraw.html') {
+    getWithdrawListeners();
+    setWithdrawListeners();
+  }
+
+  if (currentPath === '/account/transfer.html') {
+    getTransfersListeners();
+    setTransfersListeners();
+  }
+
+  if (currentPath === '/account/deposit.html') {
+    getDepositReferences();
+    setDepositListeners();
+  }
+
+  if (currentPath === '/account/usd-checkout.html') {
+    getUsdCheckoutReferences();
+    setUsdCheckoutListeners();
+  }
+
+  if (currentPath === '/account/movement-history.html') {
+    getMovementReferences();
+    renderMovements(session?.session_data?.user);
+  }
+
+  if (
+    currentPath === '/account/account.html' ||
+    currentPath === '/account/transfer.html'
+  ) {
+    await updateScreen(session?.session_data?.user);
+  }
+
   initiateFooter();
-  await updateScreen(session?.session_data?.user);
 });
