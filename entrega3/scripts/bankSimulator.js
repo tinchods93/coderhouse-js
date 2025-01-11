@@ -71,7 +71,6 @@ const pathResolver = (path) => {
     });
     if (!pathList.includes('pages')) pathList.unshift('pages');
     if (pathList[0] !== 'entrega3') pathList.unshift('entrega3');
-    console.log('MARTIN_LOG=> pathResolver -> pathList', pathList);
     window.location.pathname = pathList.join('/');
   }
 };
@@ -296,7 +295,6 @@ const buildMovementComponent = (movement) => {
   let movementComponent = JSON.parse(JSON.stringify(movementComponentModel));
   let recipientComponent = JSON.parse(JSON.stringify(recipientComponentModel));
   if (movement.movement_type === 'transferencia') {
-    console.log('MARTIN_LOG=> buildMovementComponent -> movement', movement);
     if (movement.recipientUsername) {
       recipientComponent = recipientComponent.replace(
         ':recipient',
@@ -568,7 +566,6 @@ const formatMoneyValue = (value) => {
 
 // Actualiza la pantalla con los datos del usuario
 const updateScreen = async (userData) => {
-  console.log('MARTIN_LOG=> updateScreen -> userData', userData);
   accountBalanceElement = document.getElementById('account-balance');
   if (!userData) return;
   const formattedBalance = `<li>$${formatMoneyValue(
@@ -772,9 +769,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     setDepositListeners();
   }
 
-  if (currentPath === '/account/usd-checkout.html') {
+  if (currentPath === '/account/buyUsd.html') {
     getUsdCheckoutReferences();
-    setUsdCheckoutListeners();
+    await setUsdCheckoutListeners();
   }
 
   if (currentPath === '/account/movement-history.html') {
