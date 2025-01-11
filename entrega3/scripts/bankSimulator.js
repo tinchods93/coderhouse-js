@@ -703,7 +703,9 @@ const setUsdCheckoutListeners = async () => {
     }
 
     usdCheckoutErrorMessage.innerText = '';
-    usdToGet.innerText = `USD: $${formatMoneyValue(value / usdValue)}`;
+    usdToGet.innerHTML = `USD: <strong>$${formatMoneyValue(
+      value / usdValue
+    )}</strong>`;
   });
 };
 
