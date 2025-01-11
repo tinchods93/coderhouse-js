@@ -753,6 +753,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   ) {
     getAuthElementReferences();
     setAuthListeners();
+  } else {
+    await updateScreen(session?.session_data?.user);
   }
 
   if (currentPath === '/account/withdraw.html') {
@@ -778,13 +780,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (currentPath === '/account/movement-history.html') {
     getMovementReferences();
     renderMovements(session?.session_data?.user);
-  }
-
-  if (
-    currentPath === '/account/account.html' ||
-    currentPath === '/account/transfer.html'
-  ) {
-    await updateScreen(session?.session_data?.user);
   }
 
   initiateFooter();
