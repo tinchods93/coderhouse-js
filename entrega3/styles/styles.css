@@ -27,6 +27,19 @@ h2 {
   justify-content: center;
 }
 
+.username {
+  text-transform: capitalize;
+}
+
+.error-message {
+  color: red;
+  font-weight: 400;
+}
+
+.user-info {
+  scale: 0.9;
+}
+
 .card {
   background-color: #fff;
   border-radius: 10px;
@@ -43,24 +56,6 @@ h2 {
   margin-top: 10px;
 }
 
-.card button,
-.card a {
-  background-color: #f1356d;
-  font-weight: 400;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.card button:hover,
-footer ul li a:hover,
-footer ul li button:hover {
-  background-color: #f84379;
-  color: white;
-}
-
 .card input {
   padding: 10px;
   border-radius: 5px;
@@ -74,46 +69,79 @@ footer ul li button:hover {
   gap: 5px;
 }
 
-footer {
+nav {
   width: 100%;
   height: 4em;
   margin-top: 10px;
 }
 
-footer ul {
+nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
 
-footer ul li {
+nav ul li {
   list-style: none;
   margin: 0;
   height: 100%;
 }
 
-footer ul li a,
-footer ul li button {
-  background-color: #f1356d;
+/* buttons */
+nav ul li a,
+nav ul li button,
+.card button,
+.card a {
+  background-color: #f1376f;
   font-weight: 400;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
+  gap: 10px;
+  justify-content: center;
   height: 100%;
   width: 100%;
   align-items: center;
   text-decoration: none;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px 15px;
+}
+
+.card a,
+.card button {
+  justify-content: space-between;
+}
+
+nav ul li a,
+nav ul li button {
+  flex-direction: column;
+  font-size: small;
+  gap: 5px;
+}
+
+.card button:hover,
+nav ul li a:hover,
+nav ul li button:hover {
+  background-color: #f84379;
+  color: white;
+}
+
+.card button:active,
+.card a:active,
+nav ul li a:active,
+nav ul li button:active {
+  transform: scale(0.95);
+  background-color: #d7325e;
 }
 
 .movements {
   height: 100%;
   overflow-y: auto;
   padding-bottom: 10px;
+  width: 100%;
+  border: #d7325e 1px solid;
 }
 
 .movements ul {
@@ -128,4 +156,55 @@ footer ul li button {
 .movements ul li {
   padding: 10px;
   border-bottom: 1px solid #444444bb;
+}
+
+.movements ul li:hover {
+  background-color: rgb(253, 253, 238);
+  cursor: pointer;
+}
+
+.movement {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movement-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.movement-right {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  width: 50%;
+}
+.movement-recipient,
+.movement-sender,
+.movement-amount,
+.movement-currency,
+.movement-type {
+  font-weight: 600;
+}
+
+.page-selected {
+  background-color: #37f1b9;
+  color: #071e17;
+  font-weight: 600;
+}
+
+.page-selected:hover {
+  background-color: #69f4cb;
+  border: 2px solid rgb(48, 211, 162, 0.1);
+  color: #071e17;
+}
+
+.confirm-action {
+  background-color: #6ff137 !important;
+  color: #071e17 !important;
+  font-weight: 600 !important;
 }

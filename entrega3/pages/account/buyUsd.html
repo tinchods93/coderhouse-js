@@ -18,7 +18,7 @@
   <body>
     <main class="main-container">
       <div class="container">
-        <h1>Retirar Dinero</h1>
+        <h1>Comprá Dólares</h1>
         <p>
           Saldo actual:
           <span id="account-balance"></span>
@@ -30,15 +30,25 @@
             <input
               type="number"
               min="10"
-              id="withdraw-amount"
-              name="withdraw-amount"
-              placeholder="Ingrese monto" />
-            <span id="withdraw-amount-error" class="error-message"></span>
+              id="usd-checkout-amount"
+              name="usd-checkout-amount"
+              placeholder="Ingrese monto en pesos" />
+            <span id="usd-checkout-amount-error" class="error-message"></span>
           </div>
           <div class="form-group">
-            <button type="submit" id="withdraw-btn" class="confirm-action">
+            <!-- Lo que va a recibir en dolares -->
+            <p>Monto a recibir <span id="usd-to-get">USD 0,00</span></p>
+          </div>
+          <div class="form-group">
+            <button type="submit" id="usd-checkout-btn" class="confirm-action">
               <i class="fa-solid fa-circle-check"></i>Confirmar
             </button>
+          </div>
+          <div class="form-group">
+            <!-- Lo que va a recibir en dolares -->
+            <p>
+              Valor de referencia <span id="usd-market-value">USD 0,00</span>
+            </p>
           </div>
         </form>
       </div>

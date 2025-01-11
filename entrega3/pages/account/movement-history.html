@@ -16,7 +16,7 @@
     <title>Movimientos</title>
   </head>
   <body>
-    <main>
+    <main class="main-container">
       <div class="container">
         <h1>Movimientos</h1>
         <div class="movements">
@@ -25,16 +25,25 @@
       </div>
     </main>
     <footer>
-      <ul>
-        <li><a class="navbar-button" href="./account.html">Inicio</a></li>
-        <li>
-          <a class="navbar-button" href="#">Movimientos</a>
-        </li>
-        <li>
-          <button class="navbar-button" id="logout-btn">Salir</button>
-        </li>
-      </ul>
+      <nav>
+        <ul>
+          <li>
+            <a href="./account.html"><i class="fa-solid fa-house"></i>Inicio</a>
+          </li>
+          <li>
+            <a href="#" class="page-selected"
+              ><i class="fa-solid fa-list"></i>Movimientos</a
+            >
+          </li>
+          <li>
+            <button id="logout-btn">
+              <i class="fa-solid fa-right-from-bracket"></i>Salir
+            </button>
+          </li>
+        </ul>
+      </nav>
     </footer>
+
     <script src="../../scripts/bankSimulator.js"></script>
   </body>
 </html>
