@@ -8,16 +8,18 @@
 }
 
 html,
-body {
+.phone {
   margin: 0;
   padding: 0;
 }
 
 body {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.phone {
   background-color: rgb(240, 240, 240);
   font-size: 16px;
-  font-family: 'Roboto Mono', monospace;
-
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -30,7 +32,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   border: 2px solid red;
-  border-radius: 20px;
+  border-radius: 0;
 }
 
 img,
@@ -60,9 +62,10 @@ ol {
 }
 
 @media screen and (min-width: 400px) {
-  body {
+  .phone {
     height: 640px;
     width: 360px;
+    border-radius: 20px;
     margin-left: 2em;
     margin-top: 2em;
   }

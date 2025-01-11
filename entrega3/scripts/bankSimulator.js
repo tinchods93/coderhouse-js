@@ -275,6 +275,7 @@ const buildMovementComponent = (movement) => {
   let movementComponent = JSON.parse(JSON.stringify(movementComponentModel));
   let recipientComponent = JSON.parse(JSON.stringify(recipientComponentModel));
   if (movement.movement_type === 'transferencia') {
+    console.log('MARTIN_LOG=> buildMovementComponent -> movement', movement);
     if (movement.recipientUsername) {
       recipientComponent = recipientComponent.replace(
         ':recipient',
@@ -285,7 +286,9 @@ const buildMovementComponent = (movement) => {
         recipientComponent
       );
       // si es una transferencia hacia otro, el monto es negativo
-      movement.amount = -movement.amount;
+      if (movement.amount > 0) {
+        movement.amount = -movement.amount;
+      }
     } else {
       movementComponent = movementComponent.replace(':recipient-component', '');
     }
@@ -304,7 +307,7 @@ const buildMovementComponent = (movement) => {
   }
 
   // si es un retiro o una compra de dolares, el monto es negativo
-  if (['retiro', 'compra usd'].includes(movement.movement_type)) {
+  if (['retiro'].includes(movement.movement_type)) {
     movement.amount = -movement.amount;
   }
 
@@ -519,12 +522,6 @@ const makeTransfer = async (event) => {
     text: `Se ha retirado $${formatMoneyValue(transferAmount)} de su cuenta`,
     icon: 'success',
     confirmButtonText: 'Cool',
-    backdrop: `
-    rgba(0,0,123,0.4)
-    url("/images/nyan-cat.gif")
-    left top
-    no-repeat
-  `,
   });
 
   if (swalResult.isConfirmed || swalResult.isDismissed) {
@@ -655,6 +652,7 @@ const setUsdCheckoutListeners = async () => {
       username: user.id,
       movement_date: new Date().getTime(),
       movement_type: 'compra usd',
+      currency: 'usd',
       amount: usdCheckoutAmount,
     });
 
